@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define sd(x) scanf("%d", &x)
+#define slld(x) scanf("%lld", &x)
+#define all(x) x.begin(), x.end()
+#define For(i, st, en) for(ll i=st; i<en; i++)
+#define tr(x) for(auto it=x.begin(); it!=x.end(); it++)
+#define fast std::ios::sync_with_stdio(false);cin.tie(NULL);
+#define pb push_back
+#define ll long long
+#define int long long
+#define mp make_pair
+#define F first
+#define S second
+typedef pair<int, int> pii;
+#define MOD 1000000007
+#define INF 1000000000000000007
+#define MAXN 505
+int n, k;
+int arr[MAXN];
+bool play(int x){
+    vector<int> up;
+    int val = 0;
+    int ans = 0;
+   For(i, 0, n){
+        if(arr[i]%x==0){
+            continue;
+        }
+        int v1 = arr[i]/x;
+        int v2 = v1+1;
+        int upp = x*v2 - arr[i];
+        val += upp;
+        up.pb(upp);
+   }
+    if(up.size() == 0)
+        return true;
+    sort(all(up));
+    int j = up.size() - 1;
+    For(i, 0, up.size()){
+        if(up[i]==x){
+            break;
+        }
+        int v = up[i];
+        ans += v;
+        for(j; j>=0; j--){
+            int vv = x - up[j];
+            up[j] += min(v, vv);
+            v -= min(v, vv);
+            if(v==0)
+                break;
+        }
+    }
+    if(ans <= k){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+signed main(){
+    fast
+    #ifdef SWAPNIL07
+        freopen("input.txt","r",stdin);
+        freopen("output.txt","w",stdout);
+    #endif
+    cin>>n>>k;
+    int sumv = 0;
+    For(i, 0, n){
+        cin>>arr[i];
+        sumv += arr[i];
+    }
+    int ans = 1;
+    if(k>sumv){
+        cout<<sumv;
+        return 0;
+    }
+    vector<int> div;
+    for(int i=1; i*i<=sumv; i++){
+        if(sumv%i == 0){
+            div.pb(i);
+            div.pb(sumv/i);
+        }
+    }
+    for(auto i: div){
+        if(sumv % i == 0){
+            bool v = play(i);
+            if(v)
+                ans = max(i, ans);
+        }
+    }
+    cout<<ans;
+    return 0;
+}
