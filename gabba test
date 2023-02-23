@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+class Main {
+	public static void main (String[] args) throws IOException{
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        String values[] = br.readLine().trim().split(" ");
+        long N = Long.parseLong(values[0]);
+        long M = Long.parseLong(values[1]);
+        long X = Long.parseLong(values[2]);
+        long Y = Long.parseLong(values[3]);
+        
+        if(M/X >= N){
+            System.out.print(N);
+            return;
+        }
+        else
+        {
+               long count = M/X;
+               M = M % X;
+               N = N - count;
+               if(((N-1)*Y+M)<X)
+            	 System.out.print(count);
+  			   else
+                  System.out.print(count+ N - countSacrifice(1,N,M,X,Y));
+         }
+	}
+    public static long countSacrifice(long min,long max,long M,long X,long Y)
+    {
+      long N = max;
+       while(min<max)
+       {  long mid = min + (max-min)/2;
+        if((mid*Y + M)>=((N-mid)*X))
+        {
+           max = mid;
+        }
+        else
+        {
+            min = mid+1;
+        }
+        }
+         return min;
+    }
+}
