@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    if (is_sorted(a.begin(), a.end())) {
+        cout<<"YES\n";
+        return 0;
+    }
+
+    auto repeat = [&]() {
+        for (int i = 0; i < n - 1; i++) {
+            if (a[i] > a[i + 1]) {
+                int sum = a[i] + a[i + 1];
+                if (sum & 1) {
+                    swap(a[i], a[i + 1]);
+                }
+            }
+        }
+    };
+
+    vector<int> prev = a;
+    while (1) {
+        repeat();
+        if (a == prev) {
+            break;
+        }
+        prev = a;
+    }
+
+    if (is_sorted(a.begin(), a.end()))
+        cout<<"YES\n";
+    else
+        cout<<"NO\n";
+        
+    return 0;
+}
