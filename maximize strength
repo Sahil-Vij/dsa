@@ -1,0 +1,50 @@
+0
+Sujana
+Sujana Tammisetti
+4 days ago
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define int long long
+
+
+
+signed main(){
+
+    int n, k;
+
+    cin >> n >> k;
+
+    vector<vector<int>> v(k);
+
+    for(int i = 0; i < n; i++){
+
+        int m;
+
+        cin >> m;
+
+        int rem = (i+1)%k;
+
+        v[rem].push_back(m);
+
+    }
+
+    for(int i = 0; i < k; i++){
+
+        sort(v[i].rbegin(), v[i].rend());
+
+    }
+
+    int ans=0;
+
+    for(int i = 0; i < k; i++) {
+
+        ans += v[i][0];
+
+    }
+
+    cout << ans;
+
+}
