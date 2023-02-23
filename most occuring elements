@@ -1,0 +1,54 @@
+import java.io.*; // for handling input/output
+
+import java.util.*; // contains Collections framework
+
+
+ 
+
+// don't change the name of this class
+
+// you can add inner classes if needed
+
+class Main {
+
+    public static void main (String[] args) {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int arr[] = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = scn.nextInt();
+        }
+        HashMap<Integer, Integer> map = new HashMap<>();
+        List<Integer> ans = new ArrayList<>();
+        for(int i = 0; i < n; i++) {
+            int m = arr[i];
+            if(map.containsKey(m)) {
+                int of = map.get(m);
+                int nf = of + 1;
+                map.put(m, nf);
+            }
+            else {
+                map.put(m, 1);
+                ans.add(m);
+            }
+        }
+
+        Collections.sort(ans, (a,b) -> 
+           (map.get(a) == map.get(b)) ? a - b : map.get(b) - map.get(a));
+
+        if(ans.size() < 2) {
+            System.out.print(ans.get(0) + " " + "-1" + " " + "-1");
+            return;
+        }
+        if(ans.size() < 3) {
+            System.out.print(ans.get(0) + " " + ans.get(1) + " " + "-1");
+            return;
+        }
+
+        else {
+           for(int i = 0; i < 3; i++) {
+               System.out.print(ans.get(i) + " ");
+           }
+        }
+    }
+}
