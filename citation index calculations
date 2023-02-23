@@ -1,0 +1,54 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        // int n=arr.length;
+        int arr[] =new int[n];
+        for(int i =0; i<n;i++){
+            arr[i]=sc.nextInt();
+        }
+    //     hIndex(A, n);
+    // }
+    // static void hIndex(int A [], int n){
+    //     int hindex=0;
+    //     int low=0, high=n-1;
+    //     while(low<=high)
+    //     {
+    //         int mid=(low+high)/2;
+    //         if(A[mid]> (mid+1)){
+    //             low=mid+1;
+    //             hindex=mid+1;
+    //         }
+    //         else{
+    //             high=mid -1;
+    //         }
+    //     }
+    //    System.out.println(hindex);
+    
+
+
+boolean bl = false;
+        for(int i=arr.length-1; i>=0; i--){
+            int count = 0;
+            for(int j=0; j<arr.length; j++){
+                if(arr[j]>=i+1){
+                    count++;
+                }
+            }
+            if(count>=i+1){
+                System.out.println(i+1);
+                bl = true;
+                break;
+            }
+        }
+        if(bl==false){
+            System.out.println(0);
+        }
+    }
+}
