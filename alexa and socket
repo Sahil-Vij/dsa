@@ -1,0 +1,60 @@
+import java.io.*; // for handling input/output
+
+import java.util.*; // contains Collections framework
+
+
+ 
+
+// don't change the name of this class
+
+// you can add inner classes if needed
+
+class Main {
+
+    public static void main (String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        int a = sc.nextInt();
+
+        int b = sc.nextInt();
+
+        // int div = b/a;
+
+        // int mod = b%a;
+
+        // if(a>b){
+
+        //     System.out.println(0);
+
+        //     return;
+
+        // }
+
+        int ans = 0;
+
+        int x = 1;
+
+        while(x < b) {
+
+            x--;
+
+            x += a;
+
+            ans++;
+
+        }
+
+        // if(mod == 0){
+
+            System.out.println(ans);
+
+        // }else{
+
+        //     System.out.println(div+1);
+
+        // }
+
+    }
+
+}
