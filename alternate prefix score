@@ -1,0 +1,36 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i = 0; i < n; i++) {
+            arr[i] = sc.nextInt();
+        }
+
+        Arrays.sort(arr);
+        int start = 0;
+        int end = n - 1;
+        long sum = 0;
+        boolean check = true;
+
+        for(int i = 0; i < n; i++) {
+            if(check == true) {
+                sum = sum + arr[start];
+                System.out.print(sum + " ");
+                start++;
+                check = false;
+            }
+            else {
+                sum = sum - arr[end];
+                System.out.print(sum + " ");
+                check = true;
+                end--;
+            }
+        }
+    }
+}
