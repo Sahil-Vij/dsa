@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+
+
+
+class Main {
+    public static void main (String[] args)throws Exception {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int[] val = new int[n];
+        for(int i=0; i<n; i++){
+            val[i] = Integer.parseInt(st.nextToken());
+        }
+
+        st = new StringTokenizer(br.readLine());
+        int[] freq = new int[n];
+        for(int i=0; i<n; i++){
+            freq[i] = Integer.parseInt(st.nextToken());
+        }
+
+        int k = Integer.parseInt(br.readLine());
+
+        for (int i=0; i<n; i++) {
+            for (int j=i+1; j<n; j++) {
+                if (val[j] < val[i]) {
+                    int temp = val[i];
+                    val[i] = val[j];
+                    val[j] = temp;
+                    int temp1 = freq[i];
+                    freq[i] = freq[j];
+                    freq[j] = temp1;
+                }
+            }
+        }
+        int element=0;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<freq[i]; j++){
+                element++;
+                int value = val[i];
+                if(element==k){
+                    System.out.print(value);
+                    break;
+                }
+            }
+        }
+    }
+}
