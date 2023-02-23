@@ -1,0 +1,103 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+
+    // public static void swap(int[] arr) {
+    //     int N = arr.length;
+    //     for (int i = 0; i < N - 1; i++) {     
+    //         for (int j = i+1; j < N; j++) {     
+    //            if(arr[i] < arr[j]) {    
+    //                int temp = arr[i];    
+    //                arr[i] = arr[j];    
+    //                arr[j] = temp;    
+    //            }     
+    //         }     
+    //     }
+    //     int sum = 0;
+    //     for (int i = 0; i < 4; i++) {
+    //         sum += arr[i];
+    //     }
+    //     System.out.println(sum);
+    // }
+//     static void bubbleSort(int arr[], int size) {
+//     	boolean swap;
+// 	    do
+// 	    {
+//             swap = false;
+//             int temp;
+
+//             for (int x = 0; x < size-1; x++)
+//             {
+//                 if (arr[x] > arr[x + 1])
+//                 {
+//                     temp = arr[x];
+//                     arr[x] = arr[x + 1];
+//                     arr[x + 1] = temp;
+//                     swap = true;
+//                 }
+//             }
+//         } while (swap);
+// }
+
+//     static int LargestFour(int arr[], int size) {
+//         int total = 0;
+//         if (size <= 4)
+//         {
+//             for (int x = 0; x < size; x++)
+//             {
+//                 total += arr[x];
+//             }
+//             return total;
+//         }
+//         else
+//         {
+//             // Sort our input
+//             bubbleSort(arr, size);
+
+//             int count = 0;
+//             for (int x = size - 1; count < 4; count++, x--)
+//             {
+//                 total += arr[x];
+//             }
+//             return total;
+//         }
+//     }
+
+
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        int i, j;
+        for (i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+        int third = Integer.MIN_VALUE;
+        int fourth = Integer.MIN_VALUE;
+        for (i = 0; i < n; i++) {
+            if (a[i] > first) {
+                fourth = third;
+                third = second;
+                second = first;
+                first = a[i];
+            } else if (a[i] > second) {
+                fourth = third;
+                third = second;
+                second = a[i];
+            } else if (a[i] > third) {
+                fourth = third;
+                third = a[i];
+            } else if (a[i] > fourth) {
+                fourth = a[i];
+            }
+        }
+        System.out.print(first + second + third + fourth);
+
+    }
+}
