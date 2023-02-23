@@ -1,0 +1,144 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+class Main {
+    public static void main (String[] args) {
+         Scanner sc = new Scanner(System.in);
+         int n = sc.nextInt(); 
+         for (int i = 0; i < n; i++) {
+          String num = sc.next();
+          // num.append(sc.next());
+           boolean check = false;
+            for(int j = 0; j < num.length(); j++) {
+            char ch = num.charAt(j);
+            if(ch != '0') {
+             check = true;
+             break;
+
+                }
+
+            }
+            if(!check) {
+            System.out.println("red");
+            }
+            else {
+               int sum = 0;
+               for(int j = 0; j < num.length(); j++) {
+               char ch = num.charAt(j);
+                 sum += (ch - '0');
+
+                }
+                if(sum % 3 != 0) {
+
+                    System.out.println("cyan");
+
+                }
+
+                else {
+
+                    boolean flag = false;
+
+                    for(int j = 0; j < num.length(); j++) {
+
+                       char ch = num.charAt(j);
+
+                       if(ch == '5' || ch == '0') {
+
+                           flag = true;
+
+                           break;
+
+                       }
+
+                    }
+
+                    if(!flag) {
+
+                        System.out.println("cyan");
+
+                    }
+
+                    else {
+
+                         int zero = 0;
+
+                         boolean zeroB = false;
+
+                         boolean two = false;
+
+                         boolean four = false;
+
+                         boolean six = false;
+
+                         boolean eight = false;
+
+                         for(int j = 0; j < num.length(); j++) {
+
+                             char ch = num.charAt(j);
+
+                             if(ch == '0') {
+
+                                 zero++;
+
+                                 zeroB = true;
+
+                                 if(zero == 2) break;
+
+                             }
+
+                             if(ch == '2') two = true;
+
+                             if(ch == '4') four = true;
+
+                             if(ch == '6') six = true;
+
+                             if(ch == '8') eight = true; 
+
+                         }
+
+                        if(zero == 2) {
+
+                            System.out.println("red");
+
+                        }
+
+                        else if(zeroB && two) {
+
+                            System.out.println("red");
+
+                        }
+
+                        else if(zeroB && four) {
+
+                            System.out.println("red");
+
+                        }
+
+                        else if(zeroB && six) {
+
+                            System.out.println("red");
+
+                        }
+
+                        else if(zeroB && eight) {
+
+                            System.out.println("red");
+
+                        }
+
+                        else {
+
+                            System.out.println("cyan");
+
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+    }
+
+
+}
