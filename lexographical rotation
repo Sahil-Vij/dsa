@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+
+
+class Main {
+	public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        br.readLine();
+        String[] line = br.readLine().split(" ");
+
+        int minIndex = 0;
+        long minVal = Long.MAX_VALUE;
+
+        for (int i=0;i<line.length;++i){
+            long el = Long.parseLong(line[i]);
+            if (minVal>el){
+                minVal = el;
+                minIndex = i;
+            }
+        }
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = minIndex;i< line.length;++i){
+            sb.append(line[i]+" ");
+        }
+        for (int i=0;i<minIndex;++i){
+            sb.append(line[i]+" ");
+        }
+
+        System.out.print(sb);
+    }
+}
