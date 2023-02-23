@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+
+
+class Main {
+	public static ArrayList premutaionsB(ArrayList<String> arr, int n){
+		if(n == 1)
+			return arr;
+
+		else{
+			ArrayList<String> arr2 = new ArrayList<>();
+			for(int i=0;i<arr.size();i++)
+				arr2.add("(" + arr.get(i) + ")");
+
+			for(int i=0;i<arr.size();i++)
+				arr2.add("()" + arr.get(i));
+
+			return premutaionsB(arr2, n-1);
+		}
+	}
+	public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		ArrayList<String> arr = new ArrayList<>();
+		arr.add("()");
+		arr = premutaionsB(arr, n);
+		for(int i=0;i<arr.size();i++)
+			System.out.println(arr.get(i));
+	}
+}
