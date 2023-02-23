@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+
+
+class Main {
+    public static void main (String[] args) {
+        Scanner inp = new Scanner(System.in);
+        String str = inp.nextLine();
+        int n = inp.nextInt();
+
+        Stack<Character> st = new Stack<>();
+        int check = 0;
+        for(int i = 0 ; i < str.length() ; i++){
+            if(n > 0){
+                while(!st.isEmpty() && n > 0 && str.charAt(i) > st.peek()){
+                    st.pop();
+                    n--;
+                }
+                st.push(str.charAt(i));
+                check++;
+            }
+            else
+                continue;
+        }
+        String ans = "";
+        while(!st.isEmpty()){
+            ans = st.pop() + ans;
+        }
+        if(check < str.length()){
+            ans += str.substring(check, str.length());
+        }
+        System.out.println(ans);
+    }
+}
