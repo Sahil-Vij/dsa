@@ -1,0 +1,27 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args)throws IOException{
+         BufferedReader sc = new BufferedReader(new InputStreamReader(System.in));
+         int n = Integer.parseInt(sc.readLine());
+         long arr[] = new long[n];
+         String s[] = sc.readLine().split(" ");
+         for(int i = 0; i < n; i++) {
+             arr[i] = Long.parseLong(s[i]);
+         }
+
+         int i = 0; 
+         int j = i + 1;
+         long mul = arr[i] * arr[j];
+         while(j < n - 1) {
+             i++;
+             j++;
+             mul = Math.max(mul, (arr[i] * arr[j]));
+         }
+
+         System.out.print(mul);
+    }
+}
