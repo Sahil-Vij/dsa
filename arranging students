@@ -1,0 +1,25 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        long[] a = new long[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextLong();
+        }
+        long sumB = 0;
+        long sumC = 0;
+        for (int i = 0; i < n; i++) {
+            if (a[i] <= 0) {
+                sumC += a[i];
+            } else {
+                sumB += a[i];
+            }
+        }
+        System.out.println(sumB - sumC);
+    }
+}
