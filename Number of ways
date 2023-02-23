@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define int long long
+
+int ans = 0;
+
+void dfs(int target, int idx, int N) {
+    if (target == 0) {
+        ans += 1;
+        return;
+    }
+    if (target < 0) {
+        return;
+    }
+    for (int i = idx; i <= N; i++) {
+        if (target - i < 0) {
+            break;
+        }
+        dfs(target - i, i + 1, N);
+    }
+}
+
+signed main() {
+    int tt;
+    cin >> tt;
+    while (tt--) {
+        int n;
+        cin >> n;
+        if (n == 0) {
+            cout << 0 << "\n";
+            continue;
+        }
+        ans = 0;
+        dfs(n, 1, n);
+        cout << ans << "\n";
+    }
+}
