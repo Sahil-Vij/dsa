@@ -1,0 +1,29 @@
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int i=0;i<T;i++){
+            double  A = sc.nextDouble();
+            double  X = sc.nextDouble();
+            double  B = sc.nextDouble();
+            double  Y = sc.nextDouble();
+
+            double  timeofalice = A/X;
+            double  timeofbob = B/Y;
+
+            if(A/X < B/Y){
+                System.out.println("BOB");
+            } else if(A/X > B/Y){
+                System.out.println("ALICE");
+            } else {
+                System.out.println("EQUAL");
+            }
+        }
+    }
+}
